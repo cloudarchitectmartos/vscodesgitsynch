@@ -1,3 +1,35 @@
+# Working with Multiple GitHub Accounts on VS Code:
+1. Open git bash and goto .ssh
+cd ~/.ssh
+2. Check if you already have an SSH key.
+ls -al ~/.ssh
+# it ends with .pub extention.
+3. Generate a new SSH key.
+# execute one by one
+ssh-keygen -t ed25519 -C "personal_email_address" -f ~/.ssh/<personal_github_username>
+ssh-keygen -t ed25519 -C "company_email_address" -f ~/.ssh/<company_github_username>
+4. Start SSH-agent
+eval `ssh-agent -s`
+# Then you get an output similar toAgent pid 1576
+6. Adding the public SSH key to GitHub.
+# Open the .pub file on VScode or Vim and then copy the keys.
+# execute one by one
+code ~/.ssh/personal_github_username.pub
+code ~/.ssh/company_github_username.pub
+# Then goto Github → Settings → Keys or
+# https://github.com/settings/keys and click on the New SSH key.
+7. Create config file.
+#execute one by one
+touch config
+code config           # to open this in VS code.
+# Add the below content inside the config file.
+#inside ~/.ssh/config
+Host *
+  IgnoreUnknown AddKeysToAgent,UseKeychain
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/<personal_github_username> # Default key (You can also use company key)
+
 # This is where all content will be tracked and stored.
 
 # The 4 milestones are:
