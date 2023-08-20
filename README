@@ -1,0 +1,7 @@
+# This is where all content will be tracked and stored.
+
+# The 4 milestones are:
+Step 1: Initailize Git for the project folder (this will create a local repository)
+Step 2: Add a file to the folder and add this file for change tracking on Git
+Step 3: Commit to changes locally
+Step 4: Publish the changes to a remote/centralize repository (GitHub / AzureDevops for others to see your updats)
